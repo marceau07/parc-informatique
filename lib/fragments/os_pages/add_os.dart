@@ -66,7 +66,7 @@ class AddAnOS extends State<AddOS>{
             child: ElevatedButton(
               onPressed: () {
                 if(_formKey.currentState!.validate()){
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Téléversement des données pour ${osNameController.text}"), duration: Duration(seconds: 3),));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Téléversement des données pour ${osNameController.text}"), duration: const Duration(seconds: 3),));
                 }
                 uploadOS();
               },
