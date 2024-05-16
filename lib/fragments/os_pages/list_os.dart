@@ -15,11 +15,11 @@ class OSListPage extends StatefulWidget {
 }
 
 class OSList extends State<OSListPage> {
-  final Uri uri = 'http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=OSJSON' as Uri;
-  String urlImageOs = 'http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/img/android/';
+  final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=OSJSON';
+  String urlImageOs = 'https://parc-informatique.marceau-rodrigues.fr/img/android/';
 
   Future<List<OS>> fetchOS() async {
-    var response = await http.get(uri);
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200) {
       final items = json.decode(response.body).cast<Map<String, dynamic>>();

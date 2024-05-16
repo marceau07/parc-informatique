@@ -19,9 +19,9 @@ class ComputerList extends State<ComputerListPage> {
 
   Future<List<Computer>> fetchComputersByNetwork() async {
     String choosedNetwork = widget.aNetwork;
-    Uri uri = ('http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=computersJSON&networkId=$choosedNetwork') as Uri;
+    String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=computersJSON&networkId=$choosedNetwork';
 
-    var response = await http.get(uri);
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200) {
       final items = json.decode(response.body).cast<Map<String, dynamic>>();

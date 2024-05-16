@@ -24,7 +24,6 @@ Future<String> signInWithGoogle() async {
   final User currentUser = _auth.currentUser!;
   assert(user?.uid == currentUser.uid);
 
-  print('$user'.toString());
   addUserToDb();
   return "signInWithGoogle succeeded: $user";
 
@@ -51,7 +50,7 @@ String? getFullName(){
 }
 
 Future getFirstName() async {
-  final Uri uri = ('http://portfolio.marceau-rodrigues.fr/parcinformatique/web/index.php?page=myFirstName&fullName=${getFullName()}') as Uri;
+  final Uri uri = ('https://parc-informatique.marceau-rodrigues.fr/index.php?page=myFirstName&fullName=${getFullName()}') as Uri;
 
   var response = await http.get(uri);
 
@@ -63,7 +62,7 @@ Future getFirstName() async {
 }
 
 Future getLastName() async {
-  final Uri uri = ('http://portfolio.marceau-rodrigues.fr/parcinformatique/web/index.php?page=myLastName&fullName=${getFullName()}') as Uri;
+  final Uri uri = ('https://parc-informatique.marceau-rodrigues.fr/index.php?page=myLastName&fullName=${getFullName()}') as Uri;
 
   var response = await http.get(uri);
 
@@ -78,7 +77,7 @@ String? getImageUrl(){
   if(_user != null) {
     return _user!.photoURL;
   } else {
-    return "Erreur lors de la récupération de l\'image";
+    return null;
   }
 }
 
@@ -89,7 +88,7 @@ void signOutGoogle() async {
 }
 
 Future addUserToDb() async {
-  final Uri uri = 'http://portfolio.marceau-rodrigues.fr/parcinformatique/web/index.php?page=signIn&email=${getEmail()}&fullName=${getFullName()}' as Uri;
+  final Uri uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=signIn&email=${getEmail()}&fullName=${getFullName()}' as Uri;
   var response = await http.get(uri);
 
   if(response.statusCode == 200) {

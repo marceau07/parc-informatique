@@ -18,8 +18,8 @@ class AddAnOS extends State<AddOS>{
   TextEditingController osNameController = TextEditingController();
 
   Future uploadOS() async {
-    final Uri uri = ('http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=AddOSJSON&nomOs=${osNameController.text}') as Uri ;
-    var response = await http.get(uri);
+    final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=AddOSJSON&nomOs=${osNameController.text}';
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200){
       final item = json.decode(response.body);

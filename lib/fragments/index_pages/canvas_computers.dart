@@ -21,8 +21,8 @@ class _CanvasPageState extends State<CanvasPage>{
 
   Future<List<Computer>> fetchComputers() async {
     String chosenNetwork = widget.theNetwork;
-    final Uri url = ('http://serveur1.arras-sio.com/symfony4-4017/public/parcinformatique/web/index.php?page=computersJSON&networkId=$chosenNetwork') as Uri;
-    var response = await http.get(url);
+    final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=computersJSON&networkId=$chosenNetwork';
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200) {
       final items = json.decode(response.body).cast<Map<String, dynamic>>();

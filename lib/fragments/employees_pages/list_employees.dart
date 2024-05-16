@@ -16,10 +16,10 @@ class EmployeeListPage extends StatefulWidget{
 
 class _EmployeeListPageState extends State<EmployeeListPage> {
 
-  final Uri uri = 'http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=employeesJSON' as Uri;
+  final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=employeesJSON';
 
   Future<List<Employee>> fetchEmployees() async {
-    var response = await http.get(uri);
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200) {
       final items = json.decode(response.body).cast<Map<String, dynamic>>();

@@ -3,7 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:parc_informatique/pages/sign_in_page.dart';
 
+import '../fragments/account_fragment.dart';
+import '../fragments/computer_fragment.dart';
+import '../fragments/employee_fragment.dart';
 import '../fragments/index_fragment.dart';
+import '../fragments/os_fragment.dart';
+import '../fragments/script_fragment.dart';
+import '../fragments/user_fragment.dart';
 import 'login_page.dart';
 
 class DrawerItem {
@@ -17,12 +23,12 @@ class HomePage extends StatefulWidget {
 
   final drawerItems = [
     DrawerItem("Accueil", Icons.home),
-    /*DrawerItem("Scripts", Icons.insert_drive_file),
+    DrawerItem("Scripts", Icons.insert_drive_file),
     DrawerItem("Utilisateurs", Icons.people),
     DrawerItem("Employés", Icons.people),
     DrawerItem("Ordinateurs", Icons.laptop),
     DrawerItem("Systèmes d\'exploitations", Icons.language),
-    DrawerItem("Mon compte", Icons.account_circle),*/
+    DrawerItem("Mon compte", Icons.account_circle),
     DrawerItem("Se déconnecter", Icons.clear),
   ];
 
@@ -40,20 +46,19 @@ class HomePageState extends State<HomePage> {
     switch (pos) {
       case 0:
         return const IndexScreen();
-      /*case 1:
-        return ScriptScreen();
+      case 1:
+        return const ScriptScreen();
       case 2:
-        return UserScreen();
+        return const UserScreen();
       case 3:
-        return EployeeScreen();
+        return const EmployeeScreen();
       case 4:
-        return ComputerScreen();
+        return const ComputerScreen();
       case 5:
-        return OSScreen();
+        return const OsScreen();
       case 6:
-        return AccountScreen();
-       */
-      case 2:
+        return const AccountScreen();
+      case 7:
         signOutGoogle();
         FlutterError.onError = (FlutterErrorDetails details) {
           FlutterError.dumpErrorToConsole(details);
@@ -111,9 +116,9 @@ class HomePageState extends State<HomePage> {
                   accountEmail: Text(
                       getEmail()!
                   ),
-                  currentAccountPicture: Image.network(
+                  currentAccountPicture: getImageUrl() != null? Image.network(
                       getImageUrl()!
-                  ),
+                  ) : Image.network('https://parc-informatique.marceau-rodrigues.fr/img/android/default.png'),
                 ),
                 Column(children: drawerOptions)
               ],

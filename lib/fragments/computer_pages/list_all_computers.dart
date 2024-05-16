@@ -15,10 +15,10 @@ class AllComputersPage extends StatefulWidget{
 }
 
 class ComputersAllList extends State<AllComputersPage> {
-  final Uri uri = 'http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=computersJSON' as Uri;
+  final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=computersJSON';
 
   Future<List<Computer>> fetchComputers() async {
-    var response = await http.get(uri);
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200){
       final items = json.decode(response.body).cast<Map<String, dynamic>>();

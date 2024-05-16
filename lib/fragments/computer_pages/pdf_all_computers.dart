@@ -16,7 +16,7 @@ class _AllComputersPdfState extends State<AllComputersPdf>{
   @override
   void initState() {
     super.initState();
-    getFileFromUrl("http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=listeOrdinateurPdf" as Uri).then((f){
+    getFileFromUrl("https://parc-informatique.marceau-rodrigues.fr/index.php?page=listeOrdinateurPdf" as Uri).then((f){
       setState(() {
         urlPDFPath = f.path;
         print(urlPDFPath);

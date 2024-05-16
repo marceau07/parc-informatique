@@ -70,8 +70,8 @@ class _AccountViewPage extends State<AccountViewPage> {
   }
 
   Future retrieveAccountData() async {
-    final Uri uri = ('http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=retrieveAccountData&email=${getEmail()}') as Uri;
-    var response = await http.get(uri);
+    final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=retrieveAccountData&email=${getEmail()}';
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200){
       final item = json.decode(response.body);
@@ -95,8 +95,8 @@ class _AccountViewPage extends State<AccountViewPage> {
 
   Future deleteAccount() async {
     addUserToDb();
-    final Uri uri = ('http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/web/index.php?page=deleteAccount&email=${getEmail()}') as Uri;
-    var response = await http.get(uri);
+    final String uri = 'https://parc-informatique.marceau-rodrigues.fr/index.php?page=deleteAccount&email=${getEmail()}';
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200){
       final item = json.decode(response.body);

@@ -8,9 +8,9 @@ class ScriptPage extends StatelessWidget{
 
   Future<String> fetchScripts() async {
     String theScript = fileContents;
-    Uri url = 'http://serveur1.arras-sio.com/symfony4-4017/parcinformatique/src/scripts/$theScript' as Uri;
+    String uri = 'https://parc-informatique.marceau-rodrigues.fr/scripts/$theScript';
 
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(uri));
 
     if(response.statusCode == 200) {
       String listScripts = response.body;
